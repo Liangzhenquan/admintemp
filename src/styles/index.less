@@ -10,5 +10,13 @@ aside {
 }
 header.ant-layout-header {
   height: @header-height;
+  position: relative;
+  z-index: 10;
+  line-height: @header-height;
   background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+main.ant-layout-content {
+  height: calc(100vh - @header-height);
+  overflow-y: auto;
 }

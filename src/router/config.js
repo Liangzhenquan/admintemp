@@ -60,7 +60,7 @@ function RouteWithRoutes(route) {
 function RouteWithSubRoutes({ routes }) {
   return (
     <Switch>
-      <Route path="/">
+      <Route exact path="/">
         <Redirect to="/item1" />
       </Route>
       {routes.map((route, i) => (

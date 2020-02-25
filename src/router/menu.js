@@ -1,7 +1,13 @@
 const menus = [
   {
+    title: '首页',
+    key: '/item4',
+    icon: 'home'
+  },
+  {
     title: 'item',
-    key: 'item',
+    key: '/item',
+    icon: 'home',
     sub: [
       {
         title: 'item1',
@@ -15,17 +21,13 @@ const menus = [
   },
   {
     title: '测试',
-    key: '测试',
+    key: '/test',
     sub: [
       {
-        title: 'item3',
+        title: '测试1',
         key: '/item3'
       }
     ]
-  },
-  {
-    title: 'item4',
-    key: '/item4'
   }
 ];
 export default menus;

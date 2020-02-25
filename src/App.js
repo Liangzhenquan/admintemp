@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import ErrorBoundary from './components/ErrorBoundary';
+import { getLocalStorage } from '@/utils/storage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,6 +11,12 @@ import { routes, RouteWithRoutes } from './router';
 import 'normalize.css';
 import './styles/index.less';
 function App() {
+  const token = getLocalStorage('token');
+  const pathname = window.location.pathname;
+  if (pathname === '/login' || pathname === '/404') {
+  } else if (!token) {
+    window.location.href = '/login';
+  }
   return (
     <ErrorBoundary>
       <Router>

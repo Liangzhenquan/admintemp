@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Input, Button } from 'antd';
+import message from '@/utils/message';
+import { setLocalStorage } from '@/utils/storage';
+import { post } from '@/api';
+
 const Section = styled.section`
   width: 100%;
   height: 100vh;
@@ -32,18 +36,30 @@ const LoginButton = styled(Button)`
   border: none;
   border-radius: 0.08rem;
 `;
-export default function Login() {
-  const [username, setUsername] = useState('');
+export default function Login(props) {
+  const [name, setname] = useState('');
   const [pwd, setPwd] = useState('');
   const changeName = e => {
-    setUsername(e.target.value);
+    setname(e.target.value);
   };
   const changePwd = e => {
     setPwd(e.target.value);
   };
-  const login = () => {
-    console.log(username);
-    console.log(pwd);
+  const login = async () => {
+    try {
+      const account = {
+        name,
+        password: pwd
+      };
+      let result = await post('login', account);
+      if (result.token) {
+        setLocalStorage('token', result.token);
+        props.history.push('/');
+      }
+      if (result.msg) {
+        message.error(result.msg);
+      }
+    } catch (err) {}
   };
   return (
     <Section>
@@ -51,11 +67,13 @@ export default function Login() {
         <Title>ADMIN</Title>
         <Input
           onChange={changeName}
-          value={username}
+          placeholder="admin"
+          value={name}
           prefix={<i className="iconfont icon-denglu"></i>}
         />
         <PwdInput
           onChange={changePwd}
+          placeholder="123456"
           value={pwd}
           prefix={<i className="iconfont icon-mima"></i>}
         />

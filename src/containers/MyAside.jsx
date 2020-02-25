@@ -10,19 +10,17 @@ const LogoIcon = styled(Icon)`
   font-size: 1rem;
   color: #fff;
 `;
-export default function MyAside({ menus }) {
+function MyAside({ menus, location }) {
+  const link = 'https://github.com/Liangzhenquan';
   return (
     <Sider>
       <Logo>
-        <a
-          href="https://github.com/Liangzhenquan"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
+        <a href={link} rel="noopener noreferrer" target="_blank">
           <LogoIcon type="github" />
         </a>
       </Logo>
-      <MyMenu menus={menus} />
+      <MyMenu menus={menus} location={location} />
     </Sider>
   );
 }
+export default MyAside;
