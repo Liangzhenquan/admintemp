@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/home/Item1.jsx"],"names":["Item1"],"mappings":"mGAAA,mEAEe,SAASA,IACtB,OAAO","file":"static/js/11.bbeb044a.chunk.js","sourcesContent":["import React from 'react';\r\n\r\nexport default function Item1() {\r\n  return <div>item1</div>;\r\n}\r\n"],"sourceRoot":""}
